@@ -19,20 +19,18 @@ py app.py
 
 ## Swagger documentation
 
-### /create-url
-
-#### POST
-##### Summary:
+### `/create-url` (POST)
+#### Summary:
 
 Create a short URL
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | payload | body |  | Yes | [URLModel](#URLModel) |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -40,33 +38,18 @@ Create a short URL
 | 201 | Success |
 | 400 | Validation Error |
 
-### /hello
-
-#### GET
-##### Summary:
-
-Return a greeting
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | Success |
-
-### /{short_url}
-
-#### GET
-##### Summary:
+### `/{short_url}` (GET)
+#### Summary:
 
 Redirect to the long URL
 
-##### Parameters
+#### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | short_url | path | The short URL identifier | Yes | string |
 
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -74,7 +57,6 @@ Redirect to the long URL
 | 404 | URL Not Found |
 
 ### Models
-
 
 #### URLModel
 
