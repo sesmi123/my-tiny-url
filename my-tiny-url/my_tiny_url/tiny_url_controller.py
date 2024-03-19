@@ -7,6 +7,10 @@ class TinyURLController:
         self.tiny_url = tiny_url
 
     def create_short_url(self, request):
+        """
+        Returns a short url of 7 digit unique code if already existing;
+        else creates a new short url and returns it
+        """
         if not request.is_json or 'url' not in request.get_json():
             abort(400, description="Request must be JSON and contain 'url' key.")
 
@@ -33,6 +37,9 @@ class TinyURLController:
         return jsonify(response), 201
 
     def get_long_url(self, request, short_url):
+        """
+        Redirects to the long url corresponding to the short url if found
+        """
         long_url = self.tiny_url.get_long_url(short_url)
         if not long_url:
             self.logger.error(f"No URL found for {request.url}")
