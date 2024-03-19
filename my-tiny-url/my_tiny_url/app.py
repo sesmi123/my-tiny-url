@@ -1,24 +1,10 @@
-import logging
-import sys
+from logger import configure_logging
 from flask import Flask, request
 from tiny_url import TinyURL
 from tiny_url_controller import TinyURLController
 
-def configure_logging():
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    console_handler.setFormatter(formatter)
-
-    logger.addHandler(console_handler)
-    return logger
-
-logger = configure_logging()
-
 app = Flask(__name__)
+logger = configure_logging(__name__)
 tiny_url = TinyURL()
 controller = TinyURLController(tiny_url, logger)
 
