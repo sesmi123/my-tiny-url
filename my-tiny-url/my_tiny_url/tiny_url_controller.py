@@ -8,7 +8,7 @@ class TinyURLController:
 
     def create_short_url(self, request):
         """
-        Returns a short url of 7 digit unique code if already existing;
+        Returns a short url of unique alphanumeric code of length 7, if already existing;
         else creates a new short url and returns it
         """
         if not request.is_json or 'url' not in request.get_json():
